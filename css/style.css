@@ -1,0 +1,230 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.task {
+  background: #e8e8e8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.task_continar {
+  overflow: hidden;
+  width: 90%;
+  margin: 10px auto;
+  padding: 5px;
+  border: #ccc solid 1px;
+  box-shadow: 1px 1px 2px 1px silver;
+  background: white;
+}
+.task_continar .task_header {
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  gap: 5px;
+}
+.task_continar .task_header .btn {
+  display: grid;
+  grid-template-columns: 40px calc(100% - 48px);
+  grid-template-rows: auto;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 2px 1px silver;
+  background: black;
+  color: white;
+  transition: 0.4s;
+  cursor: pointer;
+}
+.task_continar .task_header .btn:hover {
+  background: #242424;
+}
+.task_continar .task_header .btn h3 {
+  font-weight: 400;
+  text-align: center;
+  padding-inline: 10px;
+}
+.task_continar .task_header .icon {
+  width: 30px;
+  height: 30px;
+}
+.task_continar .task_header .add_icon {
+  background: url(../imgs/playlist-add_.png);
+  background-size: cover;
+}
+.task_continar .task_header .task_icon {
+  background: url(../imgs/task_.png);
+  background-size: cover;
+}
+@media screen and (max-width: 400px) {
+  .task_continar .task_header .icon {
+    width: 25px;
+    height: 25px;
+  }
+  .task_continar .task_header h3 {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .task_continar .task_content {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .task_continar .task_content {
+    overflow-x: scroll;
+  }
+}
+.task_continar .task_content .item {
+  position: relative;
+  min-width: 320px;
+}
+.task_continar .task_content .item_content {
+  display: grid;
+  grid-template-columns: 30% repeat(3, 1fr);
+  grid-template-rows: auto;
+  place-items: center;
+  padding: 5px 0;
+  border: 1px solid #ccc;
+  background: white;
+  text-align: center;
+  text-transform: capitalize;
+}
+.task_continar .task_content .item_content ul {
+  list-style: none;
+}
+.task_continar .task_content .item_content .date li {
+  padding: 2px 5px;
+  font-size: 13px;
+  text-align: center;
+}
+@media screen and (max-width: 400px) {
+  .task_continar .task_content .item_content .date li {
+    font-size: 10px;
+    min-width: 55px;
+  }
+}
+.task_continar .task_content .item_content .date li:first-child {
+  border-bottom: 1px solid black;
+}
+.task_continar .task_content .item_content .btns {
+  display: flex;
+}
+.task_continar .task_content .item_content .btns li {
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  margin-inline: 5px;
+}
+@media screen and (max-width: 400px) {
+  .task_continar .task_content .item_content .btns li {
+    font-size: 12px;
+  }
+}
+.task_continar .task_content .item_decription {
+  display: none;
+  padding: 20px;
+  min-width: 320px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.task_continar .task_content .item .block {
+  display: block;
+  opacity: 1;
+  animation: showDown 0.5s;
+}
+.task_continar .task_content .item .showdown {
+  animation: showDown 2s;
+}
+@keyframes showDown {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.task_continar .task_content .item .btn_decrption {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid black;
+  position: absolute;
+  right: 0;
+  bottom: -10px;
+  transform: translateX(-50%);
+  transform: rotate(180deg);
+  cursor: pointer;
+}
+.task_continar .task_content .items .item {
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+.task_continar .task_content .items .done {
+  background: url(../imgs/correct_.png);
+  background-size: cover;
+  cursor: pointer;
+}
+.task_continar .task_content .items .edit {
+  background: url(../imgs/edit_.png);
+  background-size: cover;
+  cursor: pointer;
+}
+.task_continar .task_content .items .delete {
+  background: url(../imgs/delete_.png);
+  background-size: cover;
+  cursor: pointer;
+}
+.task_continar .add_containar .add_content,
+.task_continar .add_containar .task_edit {
+  visibility: hidden;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px 0;
+  width: 80%;
+  max-width: 600px;
+  padding: 10px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: black;
+}
+.task_continar .add_containar .add_content input,
+.task_continar .add_containar .add_content textarea,
+.task_continar .add_containar .add_content button,
+.task_continar .add_containar .task_edit input,
+.task_continar .add_containar .task_edit textarea,
+.task_continar .add_containar .task_edit button {
+  padding: 5px;
+  border: none;
+  outline: none;
+  background: white;
+}
+.task_continar .add_containar .add_content button,
+.task_continar .add_containar .task_edit button {
+  cursor: pointer;
+  color: white;
+  background-color: black;
+  border: 1px solid white;
+}
+.task_continar .add_containar .add_content button:disabled,
+.task_continar .add_containar .task_edit button:disabled {
+  background: #181818;
+}
+.task_continar .add_containar .ask {
+  text-align: center;
+  color: white;
+}
+.task_continar .add_containar .ask button {
+  display: inline;
+  background: green;
+}
+.task_continar .add_containar .ask button:last-child {
+  background: red;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,280 @@
+@mixin flex($justify, $align) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin grid($columns, $rows) {
+  display: grid;
+  grid-template-columns: $columns;
+  grid-template-rows: $rows;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.task {
+  background: #e8e8e8;
+  @include flex(center, center);
+
+  &_continar {
+    overflow: hidden;
+    width: 90%;
+    margin: 10px auto;
+    padding: 5px;
+    border: #ccc solid 1px;
+    box-shadow: 1px 1px 2px 1px silver;
+    background: white;
+
+    .task_header {
+      margin-bottom: 10px;
+
+      @include grid(repeat(2, 1fr), auto);
+      gap: 5px;
+
+      .btn {
+        @include grid(40px calc(100% - 48px), auto);
+        align-items: center;
+        padding: 10px;
+        border: 1px solid #ccc;
+        box-shadow: 1px 1px 2px 1px silver;
+        background: black;
+        color: white;
+        transition: 0.4s;
+        cursor: pointer;
+
+        &:hover {
+          background: #242424;
+        }
+
+        h3 {
+          font-weight: 400;
+          text-align: center;
+          padding-inline: 10px;
+
+        }
+      }
+
+      .icon {
+        width: 30px;
+        height: 30px;
+      }
+
+      .add_icon {
+        background: url(../imgs/playlist-add_.png);
+        background-size: cover;
+      }
+
+      .task_icon {
+        background: url(../imgs/task_.png);
+        background-size: cover;
+      }
+
+      @media screen and (max-width:400px) {
+        .icon {
+          width: 25px;
+          height: 25px;
+        }
+
+        h3 {
+          font-size: 13px;
+        }
+      }
+    }
+
+    .task_content {
+      @media screen and (max-width:400px) {
+        font-size: 12px;
+      }
+
+      @media screen and (max-width:360px) {
+        overflow-x: scroll;
+      }
+
+      .item {
+        position: relative;
+        min-width: 320px;
+
+        &_content {
+          @include grid(30% repeat(3, 1fr), auto);
+          place-items: center;
+          padding: 5px 0;
+          border: 1px solid #ccc;
+          background: white;
+          text-align: center;
+          text-transform: capitalize;
+
+          ul {
+            list-style: none;
+          }
+
+          .date {
+            li {
+              padding: 2px 5px;
+              font-size: 13px;
+              text-align: center;
+
+              @media screen and (max-width:400px) {
+                font-size: 10px;
+                min-width: 55px;
+              }
+
+              &:first-child {
+                border-bottom: 1px solid black;
+              }
+            }
+          }
+
+          .btns {
+            display: flex;
+
+            li {
+              text-align: center;
+              width: 30px;
+              height: 30px;
+              margin-inline: 5px;
+
+              @media screen and (max-width:400px) {
+                font-size: 12px;
+              }
+            }
+
+          }
+
+        }
+
+        &_decription {
+          display: none;
+          padding: 20px;
+          min-width: 320px;
+          border-top: 1px solid black;
+          border-bottom: 1px solid black;
+        }
+
+        .block {
+          display: block;
+          opacity: 1;
+          animation: showDown 0.5s;
+        }
+
+
+        .showdown {
+          animation: showDown 2s;
+        }
+
+        @keyframes showDown {
+          0% {
+            opacity: 0;
+          }
+
+          100% {
+            opacity: 1;
+          }
+
+        }
+
+        .btn_decrption {
+          width: 0;
+          height: 0;
+          border-left: 10px solid transparent;
+          border-right: 10px solid transparent;
+          border-bottom: 10px solid black;
+          position: absolute;
+          right: 0;
+          bottom: -10px;
+          transform: translateX(-50%);
+          transform: rotate(180deg);
+          cursor: pointer;
+        }
+
+      }
+
+      .items {
+        .item {
+          margin-bottom: 20px;
+          margin-top: 5px;
+        }
+
+        .done {
+          background: url(../imgs/correct_.png);
+          background-size: cover;
+          cursor: pointer;
+        }
+
+        .edit {
+          background: url(../imgs/edit_.png);
+          background-size: cover;
+          cursor: pointer;
+        }
+
+        .delete {
+          background: url(../imgs/delete_.png);
+          background-size: cover;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .add_containar {
+
+      .add_content,
+      .task_edit {
+        visibility: hidden;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px 0;
+        width: 80%;
+        max-width: 600px;
+        padding: 10px;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: black;
+
+        input,
+        textarea,
+        button {
+          padding: 5px;
+          border: none;
+          outline: none;
+          background: white;
+        }
+
+        button {
+          cursor: pointer;
+          color: white;
+          background-color: black;
+          border: 1px solid white;
+
+          &:disabled {
+            background: #181818;
+          }
+        }
+      }
+
+      .ask {
+        text-align: center;
+        color: white;
+
+        button {
+          display: inline;
+          background: green;
+
+          &:last-child {
+            background: red;
+          }
+        }
+      }
+
+
+
+    }
+  }
+
+
+}
